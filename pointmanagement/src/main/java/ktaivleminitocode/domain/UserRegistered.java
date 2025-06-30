@@ -11,11 +11,9 @@ import lombok.*;
 @ToString
 public class UserRegistered extends AbstractEvent {
 
-    private Long walletId;
-    private Long subscriberId;
+    private Long userId;
     private String name;
     private Boolean ktCustomer;
-    private Integer pointBalance;
     private Date createdAt;
 
     public UserRegistered(User aggregate) {

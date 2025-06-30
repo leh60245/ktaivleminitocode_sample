@@ -34,13 +34,15 @@
                     <thead>
                         <tr>
                         <th>Id</th>
+                        <th>AuthorId</th>
                         <th>Title</th>
+                        <th>Content</th>
+                        <th>Category</th>
                         <th>Summary</th>
                         <th>CoverImageUrl</th>
-                        <th>Category</th>
-                        <th>Status</th>
                         <th>ReadCount</th>
                         <th>BestsellerBadge</th>
+                        <th>PublishedDate</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,13 +52,15 @@
                             :style="val === selectedRow ? 'background-color: rgb(var(--v-theme-primary), 0.2) !important;':''"
                         >
                             <td class="font-semibold">{{ idx + 1 }}</td>
+                            <td class="whitespace-nowrap" label="AuthorId">{{ val.authorId }}</td>
                             <td class="whitespace-nowrap" label="Title">{{ val.title }}</td>
+                            <td class="whitespace-nowrap" label="Content">{{ val.content }}</td>
+                            <td class="whitespace-nowrap" label="Category">{{ val.category }}</td>
                             <td class="whitespace-nowrap" label="Summary">{{ val.summary }}</td>
                             <td class="whitespace-nowrap" label="CoverImageUrl">{{ val.coverImageUrl }}</td>
-                            <td class="whitespace-nowrap" label="Category">{{ val.category }}</td>
-                            <td class="whitespace-nowrap" label="Status">{{ val.status }}</td>
                             <td class="whitespace-nowrap" label="ReadCount">{{ val.readCount }}</td>
                             <td class="whitespace-nowrap" label="BestsellerBadge">{{ val.bestsellerBadge }}</td>
+                            <td class="whitespace-nowrap" label="PublishedDate">{{ val.publishedDate }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
                                 <Icon style="cursor: pointer;" icon="mi:delete" @click="deleteRow(val)" />
@@ -119,13 +123,15 @@
                     <v-card-text>
                         <div>
                             <Number label="BookId" v-model="selectedRow.bookId" :editMode="true"/>
+                            <Number label="AuthorId" v-model="selectedRow.authorId" :editMode="true"/>
                             <String label="Title" v-model="selectedRow.title" :editMode="true"/>
+                            <String label="Content" v-model="selectedRow.content" :editMode="true"/>
+                            <String label="Category" v-model="selectedRow.category" :editMode="true"/>
                             <String label="Summary" v-model="selectedRow.summary" :editMode="true"/>
                             <String label="CoverImageUrl" v-model="selectedRow.coverImageUrl" :editMode="true"/>
-                            <String label="Category" v-model="selectedRow.category" :editMode="true"/>
                             <Number label="ReadCount" v-model="selectedRow.readCount" :editMode="true"/>
                             <Boolean label="BestsellerBadge" v-model="selectedRow.bestsellerBadge" :editMode="true"/>
-                            <BookStatus offline label="Status" v-model="selectedRow.status" :editMode="true"/>
+                            <Date label="PublishedDate" v-model="selectedRow.publishedDate" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>
                                 <v-btn

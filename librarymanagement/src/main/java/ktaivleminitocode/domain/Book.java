@@ -22,19 +22,23 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bookId;
 
+    private Long authorId;
+
     private String title;
+
+    private String content;
+
+    private String category;
 
     private String summary;
 
     private String coverImageUrl;
 
-    private String category;
-
-    private BookStatus status;
-
     private Integer readCount;
 
     private Boolean bestsellerBadge;
+
+    private Date publishedDate;
 
     public static BookRepository repository() {
         BookRepository bookRepository = LibrarymanagementApplication.applicationContext.getBean(

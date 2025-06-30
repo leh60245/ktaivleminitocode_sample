@@ -20,6 +20,16 @@
             v-model="value.updatedAt"
             :editMode="editMode"
         />
+        <String
+            label="Portfolio"
+            v-model="value.portfolio"
+            :editMode="editMode"
+        />
+        <Date
+            label="ApprovedAt"
+            v-model="value.approvedAt"
+            :editMode="editMode"
+        />
         <AuthorProfile
             offline
             label="Profile"

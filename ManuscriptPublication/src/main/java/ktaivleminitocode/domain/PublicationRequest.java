@@ -21,10 +21,6 @@ public class PublicationRequest {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long publicationRequestId;
 
-    private String summary;
-
-    private String coverImageUrl;
-
     private PublicationFormat format;
 
     private PublicationRequestStatus status;
@@ -33,7 +29,11 @@ public class PublicationRequest {
 
     private Date createdDate;
 
-    private Date updatedDate;
+    private String category;
+
+    private String summary;
+
+    private String coverImageUrl;
 
     public static PublicationRequestRepository repository() {
         PublicationRequestRepository publicationRequestRepository = ManuscriptPublicationApplication.applicationContext.getBean(

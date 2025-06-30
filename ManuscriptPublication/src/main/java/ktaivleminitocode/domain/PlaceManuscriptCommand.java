@@ -10,5 +10,4 @@ public class PlaceManuscriptCommand {
     private AuthorId authorId;
     private String title;
     private String content;
-    private ManuscriptType type;
 }

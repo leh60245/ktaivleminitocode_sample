@@ -20,7 +20,7 @@ cd /bin
 ## Run the backend micro-services
 See the README.md files inside the each microservices directory:
 
-- authormanagement
+- AuthorManagement
 - SubscriptionManagement
 - librarymanagement
 - pointmanagement
@@ -34,26 +34,26 @@ mvn spring-boot:run
 ```
 
 ## Test by API
-- authormanagement
+- AuthorManagement
 ```
- http :8088/authors authorId="authorId"name="name"createdAt="createdAt"updatedAt="updatedAt"
+ http :8088/authors authorId="authorId"name="name"createdAt="createdAt"updatedAt="updatedAt"portfolio="portfolio"approvedAt="approvedAt"
 ```
 - SubscriptionManagement
 ```
- http :8088/subscriptions subscriptionId="subscriptionId"startDate="startDate"endDate="endDate"subscriberId="subscriberId"
+ http :8088/subscriptions subscriptionId="subscriptionId"userId="userId"startDate="startDate"endDate="endDate"isSubscription="isSubscription"
 ```
 - librarymanagement
 ```
- http :8088/books bookId="bookId"title="title"summary="summary"coverImageUrl="coverImageUrl"category="category"readCount="readCount"bestsellerBadge="bestsellerBadge"
+ http :8088/books bookId="bookId"authorId="authorId"title="title"content="content"category="category"summary="summary"coverImageUrl="coverImageUrl"readCount="readCount"bestsellerBadge="bestsellerBadge"publishedDate="publishedDate"
 ```
 - pointmanagement
 ```
- http :8088/users userId="userId"name="name"email="email"isKtUser="isKTUser"points="points"
+ http :8088/users userId="userId"name="name"ktCustomer="ktCustomer"points="points"createdAt="createdAt"
 ```
 - ManuscriptPublication
 ```
- http :8088/manuscripts manuscriptId="manuscriptId"title="title"content="content"createdDate="createdDate"updatedDate="updatedDate"
- http :8088/publicationRequests publicationRequestId="publicationRequestId"summary="summary"coverImageUrl="coverImageUrl"publishedDate="publishedDate"createdDate="createdDate"updatedDate="updatedDate"
+ http :8088/manuscripts manuscriptId="manuscriptId"title="title"content="content"createdDate="createdDate"authorId="authorId"
+ http :8088/publicationRequests publicationRequestId="publicationRequestId"publishedDate="publishedDate"createdDate="createdDate"category="category"summary="summary"coverImageUrl="coverImageUrl"
 ```
 
 

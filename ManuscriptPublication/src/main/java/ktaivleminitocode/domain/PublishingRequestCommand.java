@@ -7,8 +7,7 @@ import lombok.Data;
 @Data
 public class PublishingRequestCommand {
 
-    private AuthorId authorId;
+    private Long authorId;
     private String title;
     private String content;
-    private ManuscriptType type;
 }

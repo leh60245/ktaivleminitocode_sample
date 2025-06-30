@@ -45,9 +45,9 @@
                         <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>IsKtUser</th>
+                        <th>KtCustomer</th>
                         <th>Points</th>
+                        <th>CreatedAt</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,9 +58,9 @@
                         >
                             <td class="font-semibold">{{ idx + 1 }}</td>
                             <td class="whitespace-nowrap" label="Name">{{ val.name }}</td>
-                            <td class="whitespace-nowrap" label="Email">{{ val.email }}</td>
-                            <td class="whitespace-nowrap" label="IsKtUser">{{ val.isKtUser }}</td>
+                            <td class="whitespace-nowrap" label="KtCustomer">{{ val.ktCustomer }}</td>
                             <td class="whitespace-nowrap" label="Points">{{ val.points }}</td>
+                            <td class="whitespace-nowrap" label="CreatedAt">{{ val.createdAt }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
                                 <Icon style="cursor: pointer;" icon="mi:delete" @click="deleteRow(val)" />
@@ -124,9 +124,9 @@
                         <div>
                             <Number label="UserId" v-model="selectedRow.userId" :editMode="true"/>
                             <String label="Name" v-model="selectedRow.name" :editMode="true"/>
-                            <String label="Email" v-model="selectedRow.email" :editMode="true"/>
-                            <Boolean label="IsKtUser" v-model="selectedRow.isKtUser" :editMode="true"/>
+                            <Boolean label="KtCustomer" v-model="selectedRow.ktCustomer" :editMode="true"/>
                             <Number label="Points" v-model="selectedRow.points" :editMode="true"/>
+                            <Date label="CreatedAt" v-model="selectedRow.createdAt" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>
                                 <v-btn

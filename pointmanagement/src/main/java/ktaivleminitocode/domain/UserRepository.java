@@ -14,7 +14,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
     @Query(
         value = "select user " +
         "from User user " +
-        "where(:walletId is null or user.walletId = :walletId)"
+        "where(:userId is null or user.userId = :userId)"
     )
-    User pointExhaustedStatus(Long walletId);
+    User pointExhaustedStatus(Long userId);
 }

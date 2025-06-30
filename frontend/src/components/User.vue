@@ -10,19 +10,19 @@
             v-model="value.name"
             :editMode="editMode"
         />
-        <String
-            label="Email"
-            v-model="value.email"
-            :editMode="editMode"
-        />
         <Boolean
-            label="IsKtUser"
-            v-model="value.isKtUser"
+            label="KtCustomer"
+            v-model="value.ktCustomer"
             :editMode="editMode"
         />
         <Number
             label="Points"
             v-model="value.points"
+            :editMode="editMode"
+        />
+        <Date
+            label="CreatedAt"
+            v-model="value.createdAt"
             :editMode="editMode"
         />
         <v-row class="ma-0 pa-0">

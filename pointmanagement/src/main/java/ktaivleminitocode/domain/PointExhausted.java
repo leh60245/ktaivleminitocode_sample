@@ -12,13 +12,9 @@ import lombok.*;
 public class PointExhausted extends AbstractEvent {
 
     private Long userId;
-    private Long subscriberId;
-    private Integer pointBalance;
-    private Date exhaustedAt;
-    private String name;
-    private String email;
-    private Boolean isKtUser;
+    private Integer updatePoints;
     private Integer points;
+    private Date exhaustedAt;
 
     public PointExhausted(User aggregate) {
         super(aggregate);

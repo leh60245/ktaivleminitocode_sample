@@ -29,16 +29,16 @@ jobs:
       
       - name: Build Maven Projects
         run: |
-          mvn clean package -f ./authormanagement/pom.xml
+          mvn clean package -f ./AuthorManagement/pom.xml
           mvn clean package -f ./SubscriptionManagement/pom.xml
           mvn clean package -f ./librarymanagement/pom.xml
           mvn clean package -f ./pointmanagement/pom.xml
           mvn clean package -f ./ManuscriptPublication/pom.xml
 
-      - name: Docker Build and push for Authormanagement
+      - name: Docker Build and push for AuthorManagement
         uses: docker/build-push-action@v4
         with:
-          context: ./authormanagement
+          context: ./AuthorManagement
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |

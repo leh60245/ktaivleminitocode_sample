@@ -11,13 +11,9 @@ import lombok.*;
 @ToString
 public class SubscriptionChecked extends AbstractEvent {
 
-    private Long subscriptionId;
-    private SubscriptionPlanType planType;
-    private Date startDate;
-    private Date endDate;
-    private SubscriptionStatus status;
-    private Long subscriberId;
-    private SubscriptionStatus subscriptionStatus;
+    private Long userId;
+    private Long bookId;
+    private Boolean isSubsription;
 
     public SubscriptionChecked(Subscription aggregate) {
         super(aggregate);

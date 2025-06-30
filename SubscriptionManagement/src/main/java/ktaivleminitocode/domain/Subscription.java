@@ -21,17 +21,13 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long subscriptionId;
 
-    private SubscriptionPlanType planType;
+    private Long userId;
 
     private Date startDate;
 
     private Date endDate;
 
-    private SubscriptionStatus status;
-
-    private Long subscriberId;
-
-    private SubscriptionStatus subscriptionStatus;
+    private Boolean isSubscription;
 
     public static SubscriptionRepository repository() {
         SubscriptionRepository subscriptionRepository = SubscriptionManagementApplication.applicationContext.getBean(
@@ -40,16 +36,18 @@ public class Subscription {
         return subscriptionRepository;
     }
 
+    public void ActivateSubscription() {
+        //
+    }
+
     //<<< Clean Arch / Port Method
-    public void activateSubscription(
-        ActivateSubscriptionCommand activateSubscriptionCommand
+    public void changeSubscription(
+        ChangeSubscriptionCommand changeSubscriptionCommand
     ) {
         //implement business logic here:
 
-        SubscriptionActivated subscriptionActivated = new SubscriptionActivated(
-            this
-        );
-        subscriptionActivated.publishAfterCommit();
+        SubscriptionChanged subscriptionChanged = new SubscriptionChanged(this);
+        subscriptionChanged.publishAfterCommit();
     }
 
     //>>> Clean Arch / Port Method
@@ -76,19 +74,6 @@ public class Subscription {
             this
         );
         subscriptionCancelled.publishAfterCommit();
-    }
-
-    //>>> Clean Arch / Port Method
-    //<<< Clean Arch / Port Method
-    public void unableSubscription(
-        UnableSubscriptionCommand unableSubscriptionCommand
-    ) {
-        //implement business logic here:
-
-        SubscriptionDeactivated subscriptionDeactivated = new SubscriptionDeactivated(
-            this
-        );
-        subscriptionDeactivated.publishAfterCommit();
     }
 
     //>>> Clean Arch / Port Method

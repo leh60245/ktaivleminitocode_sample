@@ -16,9 +16,9 @@ public class SubscriptionHateoasProcessor
             Link
                 .of(
                     model.getRequiredLink("self").getHref() +
-                    "/activatesubscription"
+                    "/changesubscription"
                 )
-                .withRel("activatesubscription")
+                .withRel("changesubscription")
         );
         model.add(
             Link
@@ -35,14 +35,6 @@ public class SubscriptionHateoasProcessor
                     "/cancelsubscription"
                 )
                 .withRel("cancelsubscription")
-        );
-        model.add(
-            Link
-                .of(
-                    model.getRequiredLink("self").getHref() +
-                    "/unablesubscription"
-                )
-                .withRel("unablesubscription")
         );
 
         return model;

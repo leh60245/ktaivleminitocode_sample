@@ -13,7 +13,6 @@ public class BookDesignatedAsBestseller extends AbstractEvent {
 
     private Long bookId;
     private Boolean bestsellerBadge;
-    private BookStatus status;
 
     public BookDesignatedAsBestseller(Book aggregate) {
         super(aggregate);

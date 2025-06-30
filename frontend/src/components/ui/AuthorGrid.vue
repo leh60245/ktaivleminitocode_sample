@@ -58,6 +58,8 @@
                         <th>Status</th>
                         <th>CreatedAt</th>
                         <th>UpdatedAt</th>
+                        <th>Portfolio</th>
+                        <th>ApprovedAt</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,6 +74,8 @@
                             <td class="whitespace-nowrap" label="Status">{{ val.status }}</td>
                             <td class="whitespace-nowrap" label="CreatedAt">{{ val.createdAt }}</td>
                             <td class="whitespace-nowrap" label="UpdatedAt">{{ val.updatedAt }}</td>
+                            <td class="whitespace-nowrap" label="Portfolio">{{ val.portfolio }}</td>
+                            <td class="whitespace-nowrap" label="ApprovedAt">{{ val.approvedAt }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
                                 <Icon style="cursor: pointer;" icon="mi:delete" @click="deleteRow(val)" />
@@ -137,6 +141,8 @@
                             <String label="Name" v-model="selectedRow.name" :editMode="true"/>
                             <Date label="CreatedAt" v-model="selectedRow.createdAt" :editMode="true"/>
                             <Date label="UpdatedAt" v-model="selectedRow.updatedAt" :editMode="true"/>
+                            <String label="Portfolio" v-model="selectedRow.portfolio" :editMode="true"/>
+                            <Date label="ApprovedAt" v-model="selectedRow.approvedAt" :editMode="true"/>
                             <AuthorProfile offline label="Profile" v-model="selectedRow.profile" :editMode="true"/>
                             <AuthorStatus offline label="Status" v-model="selectedRow.status" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>

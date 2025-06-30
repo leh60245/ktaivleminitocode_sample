@@ -11,11 +11,8 @@ import lombok.*;
 @ToString
 public class SubscriptionCancelled extends AbstractEvent {
 
-    private Long subscriberId;
-    private SubscriptionPlanType planType;
+    private Long userId;
     private Date cancelledAt;
-    private String cancellationReason;
-    private SubscriptionStatus status;
 
     public SubscriptionCancelled(Subscription aggregate) {
         super(aggregate);

@@ -42,5 +42,21 @@ public class PolicyHandler {
         // Sample Logic //
 
     }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='SubscriptionChecked'"
+    )
+    public void wheneverSubscriptionChecked_CheckPoint(
+        @Payload SubscriptionChecked subscriptionChecked
+    ) {
+        SubscriptionChecked event = subscriptionChecked;
+        System.out.println(
+            "\n\n##### listener CheckPoint : " + subscriptionChecked + "\n\n"
+        );
+
+        // Sample Logic //
+        User.checkPoint(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor

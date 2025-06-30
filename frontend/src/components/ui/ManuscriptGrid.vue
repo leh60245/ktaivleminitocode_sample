@@ -45,10 +45,9 @@
                         <th>Id</th>
                         <th>Title</th>
                         <th>Content</th>
-                        <th>Type</th>
                         <th>Status</th>
                         <th>CreatedDate</th>
-                        <th>UpdatedDate</th>
+                        <th>AuthorId</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,10 +59,9 @@
                             <td class="font-semibold">{{ idx + 1 }}</td>
                             <td class="whitespace-nowrap" label="Title">{{ val.title }}</td>
                             <td class="whitespace-nowrap" label="Content">{{ val.content }}</td>
-                            <td class="whitespace-nowrap" label="Type">{{ val.type }}</td>
                             <td class="whitespace-nowrap" label="Status">{{ val.status }}</td>
                             <td class="whitespace-nowrap" label="CreatedDate">{{ val.createdDate }}</td>
-                            <td class="whitespace-nowrap" label="UpdatedDate">{{ val.updatedDate }}</td>
+                            <td class="whitespace-nowrap" label="AuthorId">{{ val.authorId }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
                                 <Icon style="cursor: pointer;" icon="mi:delete" @click="deleteRow(val)" />
@@ -129,8 +127,7 @@
                             <String label="Title" v-model="selectedRow.title" :editMode="true"/>
                             <String label="Content" v-model="selectedRow.content" :editMode="true"/>
                             <Date label="CreatedDate" v-model="selectedRow.createdDate" :editMode="true"/>
-                            <Date label="UpdatedDate" v-model="selectedRow.updatedDate" :editMode="true"/>
-                            <ManuscriptType offline label="Type" v-model="selectedRow.type" :editMode="true"/>
+                            <Number label="AuthorId" v-model="selectedRow.authorId" :editMode="true"/>
                             <ManuscriptStatus offline label="Status" v-model="selectedRow.status" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>

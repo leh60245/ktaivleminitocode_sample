@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class UserRegistrationCommand {
 
-    private Long subscriberId;
+    private Long userId;
     private String name;
     private Boolean ktCustomer;
 }

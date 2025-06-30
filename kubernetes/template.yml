@@ -3,22 +3,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: authormanagement
+  name: AuthorManagement
   labels:
-    app: authormanagement
+    app: AuthorManagement
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: authormanagement
+      app: AuthorManagement
   template:
     metadata:
       labels:
-        app: authormanagement
+        app: AuthorManagement
     spec:
       containers:
-        - name: authormanagement
-          image: username/authormanagement:latest
+        - name: AuthorManagement
+          image: username/AuthorManagement:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -205,15 +205,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: authormanagement
+  name: AuthorManagement
   labels:
-    app: authormanagement
+    app: AuthorManagement
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: authormanagement
+    app: AuthorManagement
 
 
 ---

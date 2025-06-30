@@ -5,16 +5,6 @@
             v-model="value.publicationRequestId"
             :editMode="editMode"
         />
-        <String
-            label="Summary"
-            v-model="value.summary"
-            :editMode="editMode"
-        />
-        <String
-            label="CoverImageUrl"
-            v-model="value.coverImageUrl"
-            :editMode="editMode"
-        />
         <Date
             label="PublishedDate"
             v-model="value.publishedDate"
@@ -25,9 +15,19 @@
             v-model="value.createdDate"
             :editMode="editMode"
         />
-        <Date
-            label="UpdatedDate"
-            v-model="value.updatedDate"
+        <String
+            label="Category"
+            v-model="value.category"
+            :editMode="editMode"
+        />
+        <String
+            label="Summary"
+            v-model="value.summary"
+            :editMode="editMode"
+        />
+        <String
+            label="CoverImageUrl"
+            v-model="value.coverImageUrl"
             :editMode="editMode"
         />
         <PublicationFormat

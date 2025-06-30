@@ -13,9 +13,11 @@ public class PublicationProcessingStarted extends AbstractEvent {
 
     private Long publicationRequestId;
     private PublicationRequestStatus status;
-    private Date updatedDate;
+    private Long authorid;
+    private String content;
+    private String category;
+    private String summary;
     private String coverImageUrl;
-    private String authorid;
 
     public PublicationProcessingStarted(PublicationRequest aggregate) {
         super(aggregate);

@@ -24,13 +24,11 @@ public class Manuscript {
 
     private String content;
 
-    private ManuscriptType type;
-
     private ManuscriptStatus status;
 
     private Date createdDate;
 
-    private Date updatedDate;
+    private Long authorId;
 
     public static ManuscriptRepository repository() {
         ManuscriptRepository manuscriptRepository = ManuscriptPublicationApplication.applicationContext.getBean(

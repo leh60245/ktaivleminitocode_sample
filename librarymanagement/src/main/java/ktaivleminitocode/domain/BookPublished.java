@@ -12,8 +12,8 @@ import lombok.*;
 public class BookPublished extends AbstractEvent {
 
     private Long bookId;
+    private Long authorId;
     private Date publishedDate;
-    private BookStatus status;
 
     public BookPublished(Book aggregate) {
         super(aggregate);

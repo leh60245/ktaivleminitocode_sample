@@ -7,7 +7,7 @@
         <v-card-text style="margin-top:-10px;">
             <v-row no-gutters style="margin: 15px 0px -10px -15px;">
                 <v-col style="max-width:140px;">
-                    <Number class="attributes-list" label="WalletId" v-model="value.parameters.walletId" :editMode="editMode"/>
+                    <Number class="attributes-list" label="UserId" v-model="value.parameters.userId" :editMode="editMode"/>
                 </v-col>
                 <v-col>
                     <v-btn class="gs-query-search-btn contrast-primary-text"

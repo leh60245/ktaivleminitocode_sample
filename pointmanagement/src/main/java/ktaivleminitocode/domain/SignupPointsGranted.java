@@ -11,10 +11,8 @@ import lombok.*;
 @ToString
 public class SignupPointsGranted extends AbstractEvent {
 
-    private Long walletId;
-    private Long subscriberId;
-    private Integer amount;
-    private String transactionType;
+    private Long userId;
+    private Integer updatePoints;
     private Date createdAt;
 
     public SignupPointsGranted(User aggregate) {

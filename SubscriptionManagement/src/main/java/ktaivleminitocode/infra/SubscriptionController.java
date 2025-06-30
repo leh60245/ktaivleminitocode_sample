@@ -21,20 +21,20 @@ public class SubscriptionController {
     SubscriptionRepository subscriptionRepository;
 
     @RequestMapping(
-        value = "/subscriptionsactivatesubscription",
+        value = "/subscriptionschangesubscription",
         method = RequestMethod.PATCH,
         produces = "application/json;charset=UTF-8"
     )
-    public Subscription activateSubscription(
+    public Subscription changeSubscription(
         HttpServletRequest request,
         HttpServletResponse response,
-        @RequestBody ActivateSubscriptionCommand activateSubscriptionCommand
+        @RequestBody ChangeSubscriptionCommand changeSubscriptionCommand
     ) throws Exception {
         System.out.println(
-            "##### /subscription/activateSubscription  called #####"
+            "##### /subscription/changeSubscription  called #####"
         );
         Subscription subscription = new Subscription();
-        subscription.activateSubscription(activateSubscriptionCommand);
+        subscription.changeSubscription(changeSubscriptionCommand);
         subscriptionRepository.save(subscription);
         return subscription;
     }
@@ -73,25 +73,6 @@ public class SubscriptionController {
         );
         Subscription subscription = new Subscription();
         subscription.cancelSubscription(cancelSubscriptionCommand);
-        subscriptionRepository.save(subscription);
-        return subscription;
-    }
-
-    @RequestMapping(
-        value = "/subscriptions/unablesubscription",
-        method = RequestMethod.POST,
-        produces = "application/json;charset=UTF-8"
-    )
-    public Subscription unableSubscription(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        @RequestBody UnableSubscriptionCommand unableSubscriptionCommand
-    ) throws Exception {
-        System.out.println(
-            "##### /subscription/unableSubscription  called #####"
-        );
-        Subscription subscription = new Subscription();
-        subscription.unableSubscription(unableSubscriptionCommand);
         subscriptionRepository.save(subscription);
         return subscription;
     }

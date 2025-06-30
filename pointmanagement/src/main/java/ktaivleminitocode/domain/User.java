@@ -24,20 +24,11 @@ public class User {
 
     private String name;
 
-    private String email;
-
-    private Boolean isKtUser;
+    private Boolean ktCustomer;
 
     private Integer points;
 
-    @PostPersist
-    public void onPostPersist() {
-        PointExhausted pointExhausted = new PointExhausted(this);
-        pointExhausted.publishAfterCommit();
-
-        PointDeducted pointDeducted = new PointDeducted(this);
-        pointDeducted.publishAfterCommit();
-    }
+    private Date createdAt;
 
     public static UserRepository repository() {
         UserRepository userRepository = PointmanagementApplication.applicationContext.getBean(
@@ -69,6 +60,40 @@ public class User {
             this
         );
         ktBonusPointsGranted.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+
+    //<<< Clean Arch / Port Method
+    public static void checkPoint(SubscriptionChecked subscriptionChecked) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        User user = new User();
+        repository().save(user);
+
+        PointDeducted pointDeducted = new PointDeducted(user);
+        pointDeducted.publishAfterCommit();
+        PointExhausted pointExhausted = new PointExhausted(user);
+        pointExhausted.publishAfterCommit();
+        */
+
+        /** Example 2:  finding and process
+        
+
+        repository().findById(subscriptionChecked.get???()).ifPresent(user->{
+            
+            user // do something
+            repository().save(user);
+
+            PointDeducted pointDeducted = new PointDeducted(user);
+            pointDeducted.publishAfterCommit();
+            PointExhausted pointExhausted = new PointExhausted(user);
+            pointExhausted.publishAfterCommit();
+
+         });
+        */
+
     }
     //>>> Clean Arch / Port Method
 

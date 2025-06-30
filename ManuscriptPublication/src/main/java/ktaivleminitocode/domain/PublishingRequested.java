@@ -12,10 +12,9 @@ import lombok.*;
 public class PublishingRequested extends AbstractEvent {
 
     private Long manuscriptId;
-    private AuthorId authorId;
+    private Long authorId;
     private String title;
     private String content;
-    private ManuscriptType type;
     private ManuscriptStatus status;
     private Date createdDate;
 

@@ -5,9 +5,24 @@
             v-model="value.bookId"
             :editMode="editMode"
         />
+        <Number
+            label="AuthorId"
+            v-model="value.authorId"
+            :editMode="editMode"
+        />
         <String
             label="Title"
             v-model="value.title"
+            :editMode="editMode"
+        />
+        <String
+            label="Content"
+            v-model="value.content"
+            :editMode="editMode"
+        />
+        <String
+            label="Category"
+            v-model="value.category"
             :editMode="editMode"
         />
         <String
@@ -20,11 +35,6 @@
             v-model="value.coverImageUrl"
             :editMode="editMode"
         />
-        <String
-            label="Category"
-            v-model="value.category"
-            :editMode="editMode"
-        />
         <Number
             label="ReadCount"
             v-model="value.readCount"
@@ -35,12 +45,10 @@
             v-model="value.bestsellerBadge"
             :editMode="editMode"
         />
-        <BookStatus
-            offline
-            label="Status"
-            v-model="value.status"
+        <Date
+            label="PublishedDate"
+            v-model="value.publishedDate"
             :editMode="editMode"
-            @change="change"
         />
         <v-row class="ma-0 pa-0">
             <v-spacer></v-spacer>

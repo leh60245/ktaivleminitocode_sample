@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 public class PointExhaustedStatusQuery {
 
-    private Long walletId;
+    private Long userId;
 }

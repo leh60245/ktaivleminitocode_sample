@@ -6,7 +6,7 @@
         </v-card-title>
 
         <v-card-text>
-            <Number label="SubscriberId" v-model="value.subscriberId" :editMode="editMode"/>
+            <Number label="UserId" v-model="value.userId" :editMode="editMode"/>
             <Number label="BookId" v-model="value.bookId" :editMode="editMode"/>
         </v-card-text>
 
@@ -44,7 +44,7 @@ export default {
         value: {},
     }),
     created() {
-        this.value.subscriberId = 0;
+        this.value.userId = 0;
         this.value.bookId = 0;
     },
     watch: {

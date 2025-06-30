@@ -20,17 +20,10 @@
             v-model="value.createdDate"
             :editMode="editMode"
         />
-        <Date
-            label="UpdatedDate"
-            v-model="value.updatedDate"
+        <Number
+            label="AuthorId"
+            v-model="value.authorId"
             :editMode="editMode"
-        />
-        <ManuscriptType
-            offline
-            label="Type"
-            v-model="value.type"
-            :editMode="editMode"
-            @change="change"
         />
         <ManuscriptStatus
             offline

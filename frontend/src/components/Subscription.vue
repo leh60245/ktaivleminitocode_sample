@@ -5,6 +5,11 @@
             v-model="value.subscriptionId"
             :editMode="editMode"
         />
+        <Number
+            label="UserId"
+            v-model="value.userId"
+            :editMode="editMode"
+        />
         <Date
             label="StartDate"
             v-model="value.startDate"
@@ -15,31 +20,10 @@
             v-model="value.endDate"
             :editMode="editMode"
         />
-        <Number
-            label="SubscriberId"
-            v-model="value.subscriberId"
+        <Boolean
+            label="IsSubscription"
+            v-model="value.isSubscription"
             :editMode="editMode"
-        />
-        <SubscriptionPlanType
-            offline
-            label="PlanType"
-            v-model="value.planType"
-            :editMode="editMode"
-            @change="change"
-        />
-        <SubscriptionStatus
-            offline
-            label="Status"
-            v-model="value.status"
-            :editMode="editMode"
-            @change="change"
-        />
-        <SubscriptionStatus
-            offline
-            label="SubscriptionStatus"
-            v-model="value.subscriptionStatus"
-            :editMode="editMode"
-            @change="change"
         />
         <v-row class="ma-0 pa-0">
             <v-spacer></v-spacer>

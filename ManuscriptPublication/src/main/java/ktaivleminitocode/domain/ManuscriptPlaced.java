@@ -12,7 +12,7 @@ import lombok.*;
 public class ManuscriptPlaced extends AbstractEvent {
 
     private Long manuscriptId;
-    private AuthorId authorId;
+    private Long authorId;
     private String title;
     private String content;
     private ManuscriptType type;

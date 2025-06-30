@@ -11,7 +11,9 @@ public class PublicationProcessingStarted extends AbstractEvent {
 
     private Long publicationRequestId;
     private Object status;
-    private Date updatedDate;
+    private Long authorid;
+    private String content;
+    private String category;
+    private String summary;
     private String coverImageUrl;
-    private String authorid;
 }

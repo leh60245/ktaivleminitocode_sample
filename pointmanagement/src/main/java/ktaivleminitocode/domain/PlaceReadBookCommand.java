@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class PlaceReadBookCommand {
 
-    private Long subscriberId;
+    private Long userId;
     private Long bookId;
 }

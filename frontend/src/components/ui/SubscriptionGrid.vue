@@ -18,14 +18,14 @@
                 <v-btn :disabled="!selectedRow" style="margin-left: 5px;" @click="openEditDialog()" class="contrast-primary-text" small color="primary">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
-                <v-btn :disabled="!selectedRow" style="margin-left: 5px;" @click="activateSubscriptionDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('System')">
-                    <v-icon small>mdi-minus-circle-outline</v-icon>구독 활성화
+                <v-btn :disabled="!selectedRow" style="margin-left: 5px;" @click="changeSubscriptionDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('System')">
+                    <v-icon small>mdi-minus-circle-outline</v-icon>구독 상태 변경
                 </v-btn>
-                <v-dialog v-model="activateSubscriptionDialog" width="500">
-                    <ActivateSubscription
-                        @closeDialog="activateSubscriptionDialog = false"
-                        @activateSubscription="activateSubscription"
-                    ></ActivateSubscription>
+                <v-dialog v-model="changeSubscriptionDialog" width="500">
+                    <ChangeSubscription
+                        @closeDialog="changeSubscriptionDialog = false"
+                        @changeSubscription="changeSubscription"
+                    ></ChangeSubscription>
                 </v-dialog>
                 <v-btn style="margin-left: 5px;" @click="requestSubscriptionDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('User')">
                     <v-icon small>mdi-minus-circle-outline</v-icon>구독 신청
@@ -45,15 +45,6 @@
                         @cancelSubscription="cancelSubscription"
                     ></CancelSubscription>
                 </v-dialog>
-                <v-btn style="margin-left: 5px;" @click="unableSubscriptionDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('System')">
-                    <v-icon small>mdi-minus-circle-outline</v-icon>구독 비활성화
-                </v-btn>
-                <v-dialog v-model="unableSubscriptionDialog" width="500">
-                    <UnableSubscription
-                        @closeDialog="unableSubscriptionDialog = false"
-                        @unableSubscription="unableSubscription"
-                    ></UnableSubscription>
-                </v-dialog>
             </div>
             <div class="mb-5 text-lg font-bold"></div>
             <div class="table-responsive">
@@ -61,12 +52,10 @@
                     <thead>
                         <tr>
                         <th>Id</th>
-                        <th>PlanType</th>
+                        <th>UserId</th>
                         <th>StartDate</th>
                         <th>EndDate</th>
-                        <th>Status</th>
-                        <th>SubscriberId</th>
-                        <th>SubscriptionStatus</th>
+                        <th>IsSubscription</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,12 +65,10 @@
                             :style="val === selectedRow ? 'background-color: rgb(var(--v-theme-primary), 0.2) !important;':''"
                         >
                             <td class="font-semibold">{{ idx + 1 }}</td>
-                            <td class="whitespace-nowrap" label="PlanType">{{ val.planType }}</td>
+                            <td class="whitespace-nowrap" label="UserId">{{ val.userId }}</td>
                             <td class="whitespace-nowrap" label="StartDate">{{ val.startDate }}</td>
                             <td class="whitespace-nowrap" label="EndDate">{{ val.endDate }}</td>
-                            <td class="whitespace-nowrap" label="Status">{{ val.status }}</td>
-                            <td class="whitespace-nowrap" label="SubscriberId">{{ val.subscriberId }}</td>
-                            <td class="whitespace-nowrap" label="SubscriptionStatus">{{ val.subscriptionStatus }}</td>
+                            <td class="whitespace-nowrap" label="IsSubscription">{{ val.isSubscription }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
                                 <Icon style="cursor: pointer;" icon="mi:delete" @click="deleteRow(val)" />
@@ -144,12 +131,10 @@
                     <v-card-text>
                         <div>
                             <Number label="SubscriptionId" v-model="selectedRow.subscriptionId" :editMode="true"/>
+                            <Number label="UserId" v-model="selectedRow.userId" :editMode="true"/>
                             <Date label="StartDate" v-model="selectedRow.startDate" :editMode="true"/>
                             <Date label="EndDate" v-model="selectedRow.endDate" :editMode="true"/>
-                            <Number label="SubscriberId" v-model="selectedRow.subscriberId" :editMode="true"/>
-                            <SubscriptionPlanType offline label="PlanType" v-model="selectedRow.planType" :editMode="true"/>
-                            <SubscriptionStatus offline label="Status" v-model="selectedRow.status" :editMode="true"/>
-                            <SubscriptionStatus offline label="SubscriptionStatus" v-model="selectedRow.subscriptionStatus" :editMode="true"/>
+                            <Boolean label="IsSubscription" v-model="selectedRow.isSubscription" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>
                                 <v-btn
@@ -181,26 +166,25 @@ export default {
     },
     data: () => ({
         path: 'subscriptions',
-        activateSubscriptionDialog: false,
+        changeSubscriptionDialog: false,
         requestSubscriptionDialog: false,
         cancelSubscriptionDialog: false,
-        unableSubscriptionDialog: false,
     }),
     watch: {
     },
     methods:{
-        async activateSubscription(params){
+        async changeSubscription(params){
             try{
-                var path = "activateSubscription".toLowerCase();
+                var path = "changeSubscription".toLowerCase();
                 var temp = await this.repository.invoke(this.selectedRow, path, params)
                 // 스넥바 관련 수정 필요
-                // this.$EventBus.$emit('show-success','ActivateSubscription 성공적으로 처리되었습니다.')
+                // this.$EventBus.$emit('show-success','ChangeSubscription 성공적으로 처리되었습니다.')
                 for(var i = 0; i< this.value.length; i++){
                     if(this.value[i] == this.selectedRow){
                         this.value[i] = temp.data
                     }
                 }
-                this.activateSubscriptionDialog = false
+                this.changeSubscriptionDialog = false
             }catch(e){
                 console.log(e)
             }
@@ -233,22 +217,6 @@ export default {
                     }
                 }
                 this.cancelSubscriptionDialog = false
-            }catch(e){
-                console.log(e)
-            }
-        },
-        async unableSubscription(params){
-            try{
-                var path = "unableSubscription".toLowerCase();
-                var temp = await this.repository.invoke(this.selectedRow, path, params)
-                // 스넥바 관련 수정 필요
-                // this.$EventBus.$emit('show-success','UnableSubscription 성공적으로 처리되었습니다.')
-                for(var i = 0; i< this.value.length; i++){
-                    if(this.value[i] == this.selectedRow){
-                        this.value[i] = temp.data
-                    }
-                }
-                this.unableSubscriptionDialog = false
             }catch(e){
                 console.log(e)
             }

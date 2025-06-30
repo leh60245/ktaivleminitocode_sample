@@ -25,13 +25,13 @@
                     <thead>
                         <tr>
                         <th>Id</th>
-                        <th>Summary</th>
-                        <th>CoverImageUrl</th>
                         <th>Format</th>
                         <th>Status</th>
                         <th>PublishedDate</th>
                         <th>CreatedDate</th>
-                        <th>UpdatedDate</th>
+                        <th>Category</th>
+                        <th>Summary</th>
+                        <th>CoverImageUrl</th>
                         <th>ChatGPT</th>
                         </tr>
                     </thead>
@@ -42,13 +42,13 @@
                             :style="val === selectedRow ? 'background-color: rgb(var(--v-theme-primary), 0.2) !important;':''"
                         >
                             <td class="font-semibold">{{ idx + 1 }}</td>
-                            <td class="whitespace-nowrap" label="Summary">{{ val.summary }}</td>
-                            <td class="whitespace-nowrap" label="CoverImageUrl">{{ val.coverImageUrl }}</td>
                             <td class="whitespace-nowrap" label="Format">{{ val.format }}</td>
                             <td class="whitespace-nowrap" label="Status">{{ val.status }}</td>
                             <td class="whitespace-nowrap" label="PublishedDate">{{ val.publishedDate }}</td>
                             <td class="whitespace-nowrap" label="CreatedDate">{{ val.createdDate }}</td>
-                            <td class="whitespace-nowrap" label="UpdatedDate">{{ val.updatedDate }}</td>
+                            <td class="whitespace-nowrap" label="Category">{{ val.category }}</td>
+                            <td class="whitespace-nowrap" label="Summary">{{ val.summary }}</td>
+                            <td class="whitespace-nowrap" label="CoverImageUrl">{{ val.coverImageUrl }}</td>
                             <td class="whitespace-nowrap" label="ChatGPT">
                                 <ChatGptId :editMode="editMode" v-model="val.chatGptId"></ChatGptId>
                             </td>
@@ -114,11 +114,11 @@
                     <v-card-text>
                         <div>
                             <Number label="PublicationRequestId" v-model="selectedRow.publicationRequestId" :editMode="true"/>
-                            <String label="Summary" v-model="selectedRow.summary" :editMode="true"/>
-                            <String label="CoverImageUrl" v-model="selectedRow.coverImageUrl" :editMode="true"/>
                             <Date label="PublishedDate" v-model="selectedRow.publishedDate" :editMode="true"/>
                             <Date label="CreatedDate" v-model="selectedRow.createdDate" :editMode="true"/>
-                            <Date label="UpdatedDate" v-model="selectedRow.updatedDate" :editMode="true"/>
+                            <String label="Category" v-model="selectedRow.category" :editMode="true"/>
+                            <String label="Summary" v-model="selectedRow.summary" :editMode="true"/>
+                            <String label="CoverImageUrl" v-model="selectedRow.coverImageUrl" :editMode="true"/>
                             <PublicationFormat offline label="Format" v-model="selectedRow.format" :editMode="true"/>
                             <PublicationRequestStatus offline label="Status" v-model="selectedRow.status" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
